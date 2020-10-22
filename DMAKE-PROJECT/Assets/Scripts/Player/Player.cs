@@ -31,6 +31,8 @@ public class Player : MonoBehaviour, IDamageable
     private bool isDead = false;
     public bool canThrowAxe = true;
 
+    public int points = 0;
+
     [SerializeField]
     private GameObject flyingAxePrefab;
     public GameObject axeSprite;
@@ -98,6 +100,8 @@ public class Player : MonoBehaviour, IDamageable
 
         Health -= damageAmount;
 
+        UIManager.Instance.UpdateLifeUnits(Health);
+
         if (Health <= 0)
         {
             _anim.IsDead();
@@ -122,5 +126,11 @@ public class Player : MonoBehaviour, IDamageable
     {
         canThrowAxe = enable;
         axeSprite.GetComponent<SpriteRenderer>().enabled = enable;
+    }
+
+    public void AddPoints(int amount)
+    {
+        points += amount;
+        UIManager.Instance.UpdatePointCount(points);
     }
 }

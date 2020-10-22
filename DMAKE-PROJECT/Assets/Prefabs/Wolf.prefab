@@ -176,7 +176,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 2
   speed: 0
-  points: 0
+  coins: 2
+  coinPrefab: {fileID: 7459290430165092202, guid: 4cc8c40d1085c5e4b9e39e59fe4f6b53, type: 3}
 --- !u!212 &4126649912936908368
 SpriteRenderer:
   m_ObjectHideFlags: 0

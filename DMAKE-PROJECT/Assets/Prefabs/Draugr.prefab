@@ -73,7 +73,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   speed: 0
-  points: 0
+  coins: 3
+  coinPrefab: {fileID: 7459290430165092202, guid: 4cc8c40d1085c5e4b9e39e59fe4f6b53, type: 3}
 --- !u!1 &1933088584703549811
 GameObject:
   m_ObjectHideFlags: 0

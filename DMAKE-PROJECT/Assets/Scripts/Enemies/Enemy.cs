@@ -9,7 +9,8 @@ public class Enemy : MonoBehaviour, IDamageable
     public int Health { get; set; }
     [SerializeField] protected int health;
     [SerializeField] protected float speed;
-    [SerializeField] protected int points;
+    [SerializeField] protected int coins;
+    [SerializeField] protected GameObject coinPrefab;
 
     protected bool isDead = false;
 
@@ -30,6 +31,12 @@ public class Enemy : MonoBehaviour, IDamageable
     public virtual void Death()
     {
         anim.SetTrigger("dead");
+
+        for(int i = 0; i < coins; i++)
+        {
+            Instantiate(coinPrefab, transform.position, Quaternion.identity);
+        }
+
         isDead = true;
     }
 
