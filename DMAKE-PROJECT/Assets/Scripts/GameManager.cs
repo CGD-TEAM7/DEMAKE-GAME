@@ -19,18 +19,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public IEnumerator LoadMainMenu(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-
-        SceneManager.LoadScene("MainMenu");
-    }
-
-    public IEnumerator LoadLevel(string sceneName, float delay)
+    public IEnumerator LoadLevelRoutine(string sceneName, float delay)
     {
         yield return new WaitForSeconds(delay);
 
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void LoadLevel(string sceneName)
+    {
+        StartCoroutine(LoadLevelRoutine(sceneName, 0));
+    }
+
+    public void QuitApplication()
+    {
+        Application.Quit();
     }
 
     private void Awake()
