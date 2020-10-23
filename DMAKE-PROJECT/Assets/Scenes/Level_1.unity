@@ -1304,6 +1304,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1439865801554209899, guid: 243722d87e1999543aba4577129d2b35, type: 3}
+      propertyPath: speed
+      value: 4.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5357473315645348682, guid: 243722d87e1999543aba4577129d2b35, type: 3}
       propertyPath: m_Name
       value: Wolf
