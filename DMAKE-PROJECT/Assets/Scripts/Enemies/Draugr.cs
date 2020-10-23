@@ -16,10 +16,15 @@ public class Draugr : Enemy
 
     void Update()
     {
-        if (Vector2.Distance(transform.position, playerPosition.position) < distToStopFollow)
+        if(!isDead)
         {
-            Movement();
+            if (Vector2.Distance(transform.position, playerPosition.position) < distToStopFollow)
+            {   
+                Movement();
+            }
         }
+
+        
     }
 
     public override void Movement()
