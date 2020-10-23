@@ -4,44 +4,59 @@ using UnityEngine;
 
 public class Draugr : Enemy
 {
-    public Transform playerPosition;
+    private float attackDistance = 0.8f;
 
-    private float distToStopFollow = 3f;
+    private float distToFollow = 3f;
     private bool moveToPlayer = false;
+    private bool inCombat = false;
 
-    void Awake()
+    public override void Init()
     {
-        speed = 0.02f;
+        base.Init();
+        StartCoroutine(Move());
     }
 
-    void Update()
-    {
-        if(!isDead)
-        {
-            if (Vector2.Distance(transform.position, playerPosition.position) < distToStopFollow)
-            {   
-                Movement();
-            }
-        }
 
+    public IEnumerator Move()
+    {
+         while (!isDead) 
+         {
+             while(Vector2.Distance(transform.position, Player.Instance.transform.position) > distToFollow && !isDead)
+             {
+                 Patrol();
+                 yield return null;
+             }
+
+             inCombat = true;
+             while(inCombat && !isDead)
+             {
+                 InCombat();
+                 yield return null;
+             }
+
+             anim.SetBool("Running", false);
+             yield return null;
+         }
         
     }
 
-    public override void Movement()
+    public void Patrol()
     {
-        StartCoroutine(coMovement());
+
     }
 
-    IEnumerator coMovement()
-    { 
-        moveToPlayer = true;
-        Vector2 targetPos = Player.Instance.transform.position;
+    public void InCombat()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, Player.Instance.transform.position * 1.3f, speed * Time.deltaTime);
+        anim.SetBool("Running", true);
 
-        while (moveToPlayer)
+        if(Vector2.Distance(transform.position, Player.Instance.transform.position) < attackDistance)
         {
-            transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
-            if (Vector2.Distance(transform.position, targetPos) < 0.1f) moveToPlayer = false;
-            yield return null;
+            anim.SetTrigger("Attack");
         }
+
+        if (Vector2.Distance(transform.position, Player.Instance.transform.position) > distToFollow) inCombat = false;
+        
     }
+
 }

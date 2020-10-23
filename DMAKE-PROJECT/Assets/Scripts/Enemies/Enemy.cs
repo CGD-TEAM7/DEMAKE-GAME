@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamageable
 {
-    private Animator anim;
+    protected Animator anim;
+    protected SpriteRenderer sprite;
 
     public int Health { get; set; }
     [SerializeField] protected int health;
@@ -14,12 +15,20 @@ public class Enemy : MonoBehaviour, IDamageable
 
     protected bool isDead = false;
 
-    private void Start()
+    public virtual void Init()
     {
         anim = GetComponentInChildren<Animator>();
-        if(!anim) Debug.LogError(name + " needs a Animator Component attached to a child object.");
+        if (!anim) Debug.LogError(name + " needs a Animator Component attached to a child object.");
+
+        sprite = GetComponentInChildren<SpriteRenderer>();
+        if (!sprite) Debug.LogError(name + " needs a Sprite Component attached to a child object.");
 
         Health = health;
+    }
+
+    public virtual void Start()
+    {
+        Init();
     }
 
     public virtual void Update()
@@ -56,10 +65,22 @@ public class Enemy : MonoBehaviour, IDamageable
             return;
 
         Health -= damageAmount;
+        StartCoroutine(Hurt());
 
         if (Health <= 0)
         {
             Death();
         }
     }
+
+    IEnumerator Hurt()
+    {
+        Color OriginalColour = sprite.color;
+        sprite.color = new Color(0.6117f,0.1254f, 0.1254f);
+
+        yield return new WaitForSeconds(0.2f);
+
+        sprite.color = OriginalColour;
+    }
+
 }
