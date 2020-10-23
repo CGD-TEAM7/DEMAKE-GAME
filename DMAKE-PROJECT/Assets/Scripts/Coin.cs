@@ -18,9 +18,7 @@ public class Coin : MonoBehaviour
         {
             Player.Instance.AddPoints(pointValue);
             Instantiate(collectEffect, transform.position, Quaternion.identity);
-            GetComponent<SpriteRenderer>().enabled = false;
-            GetComponent<BoxCollider2D>().enabled = false;
-            Destroy(gameObject, 2.0f);
+            Destroy(gameObject);
         }
     }
 

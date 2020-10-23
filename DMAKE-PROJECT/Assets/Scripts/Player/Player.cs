@@ -22,7 +22,7 @@ public class Player : MonoBehaviour, IDamageable
     private PlayerAnimation _anim;
 
     public int Health { get; set; }
-    private int maxHealth = 5;
+    [HideInInspector] public int maxHealth = 5;
 
     [Range(1f, 10f)]
     public float _moveSpeed = 1f;
@@ -107,6 +107,20 @@ public class Player : MonoBehaviour, IDamageable
             _anim.IsDead();
             isDead = true;
         }
+    }
+
+    public void AddHealth(int amount)
+    {
+        if (Health >= maxHealth)
+        {
+            AddPoints(amount);
+        }
+        else
+        {
+            Health += amount;
+        }
+
+        UIManager.Instance.UpdateLifeUnits(Health);
     }
 
     private void Flip(GameObject obj, int direction)

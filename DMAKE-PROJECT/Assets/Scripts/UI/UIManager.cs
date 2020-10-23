@@ -30,9 +30,13 @@ public class UIManager : MonoBehaviour
 
     public void UpdateLifeUnits(int livesRemaining)
     {
-        for (int i = 0; i <= livesRemaining; i++)
+        for (int i = 0; i < lifeUnits.Length; i++)
         {
-            if (i == livesRemaining)
+            if (i < livesRemaining)
+            {
+                lifeUnits[i].enabled = true;
+            }
+            else
             {
                 lifeUnits[i].enabled = false;
             }
