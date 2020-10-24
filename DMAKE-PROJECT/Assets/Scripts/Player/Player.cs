@@ -138,8 +138,8 @@ public class Player : MonoBehaviour, IDamageable
 
     public void EnableAxeSprite(bool enable)
     {
-        canThrowAxe = enable;
         axeSprite.GetComponent<SpriteRenderer>().enabled = enable;
+        canThrowAxe = enable;
     }
 
     public void AddPoints(int amount)

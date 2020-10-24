@@ -124,4 +124,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 2
   damageEffect: {fileID: 801139173760665900, guid: 60b12ac62d4d4e849ac8d9604839c473, type: 3}
-  effectColor: {r: 0.2509804, g: 0.48627454, b: 0.2509804, a: 1}
+  effectColor: {r: 0.3921569, g: 0.28235295, b: 0.09411766, a: 1}
