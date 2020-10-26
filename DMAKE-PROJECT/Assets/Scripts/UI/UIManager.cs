@@ -23,6 +23,35 @@ public class UIManager : MonoBehaviour
     public Text pointCountText;
     public Image[] lifeUnits;
 
+    public Text timerText;
+
+    public Text dialogText;
+
+    public Image dialogImage;
+
+    private const float dialogTextTime = 0.15f;
+    private const float dialogTextTimeLong = 2.0f;
+
+
+    private void Awake()
+    {
+        _instance = this;
+    }
+
+    private void Start()
+    {
+        StartCoroutine(DialogRoutine("Follow me into the woods boy",
+    "It  is  time  you  showed  me  what  you  know  about  hunting"));
+    }
+
+    public void UpdateTimerText(float time)
+    {
+        var minutes = time / 60;
+        var seconds = time % 60;
+
+        timerText.text = string.Format("{0:00} : {1:00}", minutes, seconds);
+    }
+
     public void UpdatePointCount(int count)
     {
         pointCountText.text = count.ToString();
@@ -43,8 +72,56 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void Awake()
+    IEnumerator DialogRoutine(string text)
     {
-        _instance = this;
+        dialogText.text = "";
+        dialogImage.enabled = true;
+        Player.Instance.enabled = false;
+
+        string[] strArray = text.Split(" "[0]);
+
+        for (int i = 0; i < strArray.Length; i++)
+        {
+            dialogText.text += strArray[i] + " ";
+            yield return new WaitForSeconds(dialogTextTime);
+        }
+
+        yield return new WaitForSeconds(dialogTextTimeLong);
+
+        dialogText.text = "";
+        dialogImage.enabled = false;
+        Player.Instance.enabled = true;
+    }
+
+    IEnumerator DialogRoutine(string text, string text2)
+    {
+        dialogText.text = "";
+        dialogImage.enabled = true;
+        Player.Instance.enabled = false;
+
+        string[] strArray = text.Split(" "[0]);
+
+        for (int i = 0; i < strArray.Length; i++)
+        {
+            dialogText.text += strArray[i] + " ";
+            yield return new WaitForSeconds(dialogTextTime);
+        }
+
+        yield return new WaitForSeconds(dialogTextTimeLong);
+
+        strArray = text2.Split(" "[0]);
+        dialogText.text = "";
+
+        for (int i = 0; i < strArray.Length; i++)
+        {
+            dialogText.text += strArray[i] + " ";
+            yield return new WaitForSeconds(dialogTextTime);
+        }
+
+        yield return new WaitForSeconds(dialogTextTimeLong);
+
+        dialogText.text = "";
+        dialogImage.enabled = false;
+        Player.Instance.enabled = true;
     }
 }

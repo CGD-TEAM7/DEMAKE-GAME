@@ -244,8 +244,6 @@ D:\UWE Documents\Games Technology\Level 3\Commercial Game Development\DEMAKE-GAM
 D:\UWE Documents\Games Technology\Level 3\Commercial Game Development\DEMAKE-GAME\DMAKE-PROJECT\Temp\bin\Debug\Unity.2D.Common.Editor.pdb
 D:\UWE Documents\Games Technology\Level 3\Commercial Game Development\DEMAKE-GAME\DMAKE-PROJECT\Temp\bin\Debug\Unity.InternalAPIEditorBridge.001.pdb
 D:\UWE Documents\Games Technology\Level 3\Commercial Game Development\DEMAKE-GAME\DMAKE-PROJECT\Temp\bin\Debug\UnityEditor.UI.pdb
-D:\UWE Documents\Games Technology\Level 3\Commercial Game Development\DEMAKE-GAME\DMAKE-PROJECT\Temp\bin\Debug\Cinemachine.pdb
-D:\UWE Documents\Games Technology\Level 3\Commercial Game Development\DEMAKE-GAME\DMAKE-PROJECT\Temp\bin\Debug\com.unity.cinemachine.editor.pdb
 D:\UWE Documents\Games Technology\Level 3\Commercial Game Development\DEMAKE-GAME\DMAKE-PROJECT\Temp\bin\Debug\UnityEngine.AIModule.xml
 D:\UWE Documents\Games Technology\Level 3\Commercial Game Development\DEMAKE-GAME\DMAKE-PROJECT\Temp\bin\Debug\UnityEngine.ARModule.xml
 D:\UWE Documents\Games Technology\Level 3\Commercial Game Development\DEMAKE-GAME\DMAKE-PROJECT\Temp\bin\Debug\UnityEngine.AccessibilityModule.xml

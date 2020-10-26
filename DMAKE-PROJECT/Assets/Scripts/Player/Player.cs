@@ -24,7 +24,7 @@ public class Player : MonoBehaviour, IDamageable
     public int Health { get; set; }
     [HideInInspector] public int maxHealth = 5;
 
-    [Range(1f, 10f)]
+    [Range(0f, 10f)]
     public float _moveSpeed = 1f;
 
     [HideInInspector] public bool isDead = false;
@@ -67,6 +67,8 @@ public class Player : MonoBehaviour, IDamageable
         {
             ThrowAxe();
         }
+
+        UpdateTimer();
     }
 
     private void Move(float speed)
@@ -158,5 +160,22 @@ public class Player : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(0.2f);
 
         _sprite.color = OriginalColour;
+    }
+
+    public void UpdateTimer()
+    {
+        GameManager.Instance.time += Time.deltaTime;
+        UIManager.Instance.UpdateTimerText(GameManager.Instance.time);
+    }
+
+    public void AddTimerToPoints()
+    {
+        UIManager.Instance.timerText.enabled = false;
+
+        int finishTime = Mathf.RoundToInt(GameManager.Instance.time);
+
+        int pointsToAdd = 50 - Mathf.RoundToInt(finishTime / 10);
+
+        if (pointsToAdd < 0) points += pointsToAdd;
     }
 }

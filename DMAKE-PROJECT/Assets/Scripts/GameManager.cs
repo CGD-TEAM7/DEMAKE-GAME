@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public float time;
+
     public IEnumerator LoadLevelRoutine(string sceneName, float delay)
     {
         yield return new WaitForSeconds(delay);
