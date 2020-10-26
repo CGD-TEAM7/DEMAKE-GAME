@@ -24,7 +24,7 @@ public class Player : MonoBehaviour, IDamageable
     public int Health { get; set; }
     [HideInInspector] public int maxHealth = 5;
 
-    [Range(1f, 10f)]
+    [Range(0f, 10f)]
     public float _moveSpeed = 1f;
 
 
