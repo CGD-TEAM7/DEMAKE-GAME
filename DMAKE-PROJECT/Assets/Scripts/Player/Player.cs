@@ -68,6 +68,8 @@ public class Player : MonoBehaviour, IDamageable
         {
             ThrowAxe();
         }
+
+        UpdateTimer();
     }
 
     private void Move(float speed)
@@ -146,5 +148,22 @@ public class Player : MonoBehaviour, IDamageable
     {
         points += amount;
         UIManager.Instance.UpdatePointCount(points);
+    }
+
+    public void UpdateTimer()
+    {
+        GameManager.Instance.time += Time.deltaTime;
+        UIManager.Instance.UpdateTimerText(GameManager.Instance.time);
+    }
+
+    public void AddTimerToPoints()
+    {
+        UIManager.Instance.timerText.enabled = false;
+
+        int finishTime = Mathf.RoundToInt(GameManager.Instance.time);
+
+        int pointsToAdd = 50 - Mathf.RoundToInt(finishTime / 10);
+
+        if (pointsToAdd < 0) points += pointsToAdd;
     }
 }
