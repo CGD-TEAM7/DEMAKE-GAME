@@ -27,8 +27,7 @@ public class Player : MonoBehaviour, IDamageable
     [Range(1f, 10f)]
     public float _moveSpeed = 1f;
 
-
-    private bool isDead = false;
+    [HideInInspector] public bool isDead = false;
     public bool canThrowAxe = true;
 
     public int points = 0;
@@ -107,6 +106,7 @@ public class Player : MonoBehaviour, IDamageable
         if (Health <= 0)
         {
             _anim.IsDead();
+            StartCoroutine(GameManager.Instance.LoadLevelRoutine("LoseMenu", 2f));
             isDead = true;
         }
     }

@@ -6,7 +6,7 @@ public class Wolf : Enemy
 {
     private float attackDistance = 0.8f;
 
-    private float distToFollow = 7f;
+    private float distToFollow = 10f;
     private bool moveToPlayer = false;
 
     public override void Init()
@@ -22,7 +22,6 @@ public class Wolf : Enemy
         {
             while (Vector2.Distance(transform.position, Player.Instance.transform.position) > distToFollow && !isDead)
             {
-                Patrol();
                 yield return null;
             }
 
@@ -36,11 +35,6 @@ public class Wolf : Enemy
             anim.SetBool("Running", false);
             yield return null;
         }
-
-    }
-
-    public void Patrol()
-    {
 
     }
 
@@ -66,8 +60,4 @@ public class Wolf : Enemy
         if (Vector2.Distance(transform.position, Player.Instance.transform.position) > distToFollow) inCombat = false;
 
     }
-
-
-
-
 }

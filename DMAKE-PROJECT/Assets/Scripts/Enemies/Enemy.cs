@@ -77,12 +77,12 @@ public class Enemy : MonoBehaviour, IDamageable
 
     IEnumerator Hurt()
     {
-        Color OriginalColour = sprite.color;
+        Color originalColour = sprite.color;
         sprite.color = new Color(0.6117f,0.1254f, 0.1254f);
 
         yield return new WaitForSeconds(0.2f);
 
-        sprite.color = OriginalColour;
+        sprite.color = originalColour;
     }
 
 }

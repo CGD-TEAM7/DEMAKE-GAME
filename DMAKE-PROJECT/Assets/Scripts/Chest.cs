@@ -48,8 +48,6 @@ public class Chest : MonoBehaviour, IDamageable
     {
         int randNum = Random.Range(0, Player.Instance.Health);
 
-        Debug.Log(randNum);
-
         if (randNum < (Player.Instance.maxHealth) / 4)
         {
             return heart;
