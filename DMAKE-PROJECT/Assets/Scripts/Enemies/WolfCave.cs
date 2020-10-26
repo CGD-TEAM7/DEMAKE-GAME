@@ -6,12 +6,12 @@ public class WolfCave : MonoBehaviour
 {
     public GameObject wolfPrefab;
 
-    public float minPlayerDistance = 5f;
+    private float minPlayerDistance = 8f;
 
-    public float timeBetweenSpawns = 1.5f;
+    private float timeBetweenSpawns = 1.5f;
 
     private int spawnCount;
-    private int amountToSpawn = 3;
+    public int amountToSpawn = 3;
 
     IEnumerator SpawnWolfs()
     {

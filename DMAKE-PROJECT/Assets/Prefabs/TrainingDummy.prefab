@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3654568204420651207}
   - component: {fileID: 6913566359487398562}
-  - component: {fileID: 7168905671808255281}
   - component: {fileID: 906511492680618756}
+  - component: {fileID: 7017963670788207601}
   m_Layer: 0
   m_Name: TrainingDummy
   m_TagString: Untagged
@@ -84,21 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7168905671808255281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478161898460986883}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb5fd87ba68391a48a88eb15a2e87226, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 3
-  damageEffect: {fileID: 801139173760665900, guid: 60b12ac62d4d4e849ac8d9604839c473, type: 3}
-  effectColor: {r: 0.40784317, g: 0.28235295, b: 0.0627451, a: 1}
 --- !u!61 &906511492680618756
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -125,3 +110,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7017963670788207601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478161898460986883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1fe1e51cbafa2b4e9300629ab267286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  damageEffect: {fileID: 801139173760665900, guid: 60b12ac62d4d4e849ac8d9604839c473, type: 3}
+  effectColor: {r: 0.40784317, g: 0.28235295, b: 0.0627451, a: 1}
+  coin: {fileID: 7459290430165092202, guid: 4cc8c40d1085c5e4b9e39e59fe4f6b53, type: 3}

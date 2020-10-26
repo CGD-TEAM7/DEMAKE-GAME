@@ -9,6 +9,11 @@ public class Draugr : Enemy
     private float distToFollow = 3f;
     private bool moveToPlayer = false;
 
+    public Transform target;
+    private Vector2 originalPos;
+
+    private bool destReached = false;
+
     public override void Init()
     {
         base.Init();
@@ -18,11 +23,13 @@ public class Draugr : Enemy
 
     public IEnumerator Move()
     {
+        originalPos = transform.position;
+
          while (!isDead) 
          {
              while(Vector2.Distance(transform.position, Player.Instance.transform.position) > distToFollow && !isDead)
              {
-                 Patrol();
+                Patrol();
                  yield return null;
              }
 
@@ -41,7 +48,30 @@ public class Draugr : Enemy
 
     public void Patrol()
     {
+        anim.SetBool("Running", true);
 
+        if(!destReached)
+        {
+            if (Vector2.Distance(transform.position, target.position) > 0.1f)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime * 0.8f);
+            }
+            else
+            {
+                destReached = true;
+            }
+        }
+        else
+        {
+            if (Vector2.Distance(transform.position, originalPos) > 0.1f)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, originalPos, speed * Time.deltaTime * 0.8f);
+            }
+            else
+            {
+                destReached = false;
+            }
+        }
     }
 
     public void InCombat()
@@ -63,7 +93,7 @@ public class Draugr : Enemy
             anim.SetTrigger("Attack");
         }
 
-        if (Vector2.Distance(transform.position, Player.Instance.transform.position) > distToFollow) inCombat = false;
+        //if (Vector2.Distance(transform.position, Player.Instance.transform.position) > distToFollow) inCombat = false;
         
     }
 

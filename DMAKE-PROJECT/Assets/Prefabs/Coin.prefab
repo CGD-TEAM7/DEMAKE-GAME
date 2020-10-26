@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7459290430165092196}
   - component: {fileID: 7459290430165092197}
   - component: {fileID: 1139205030821248785}
-  - component: {fileID: 8070672344389633}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -74,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: -4741422362563310319, guid: 11699981616e8b04eb910dacd6c6412e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -145,24 +144,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointValue: 1
   collectEffect: {fileID: 801139173760665900, guid: 74d4c37b7d7124e4b8eacd100041f67c, type: 3}
---- !u!50 &8070672344389633
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7459290430165092202}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0

@@ -34,7 +34,6 @@ public class Chest : MonoBehaviour, IDamageable
     public void Open()
     {
         anim.SetTrigger("open");
-        GetComponent<BoxCollider2D>().enabled = false;
         SpawnItem(CalculateItemToSpawn());
     }
 

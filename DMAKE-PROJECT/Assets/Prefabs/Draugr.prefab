@@ -147,6 +147,7 @@ MonoBehaviour:
   speed: 3.5
   coins: 3
   coinPrefab: {fileID: 7459290430165092202, guid: 4cc8c40d1085c5e4b9e39e59fe4f6b53, type: 3}
+  bloodEffect: {fileID: 801139173760665900, guid: 6674e0ce419c0784d8441eae23040713, type: 3}
 --- !u!50 &-4239272036102525872
 Rigidbody2D:
   serializedVersion: 4

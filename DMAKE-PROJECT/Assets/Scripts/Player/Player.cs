@@ -38,6 +38,8 @@ public class Player : MonoBehaviour, IDamageable
 
     private bool facingLeft = false;
 
+    private Color originalSpriteColor;
+
     private void Awake()
     {
         _instance = this;
@@ -63,7 +65,7 @@ public class Player : MonoBehaviour, IDamageable
 
         Move(_moveSpeed);
 
-        if(Input.GetButtonDown("Fire2") && canThrowAxe)
+        if(Input.GetButtonDown("Fire1") && canThrowAxe)
         {
             ThrowAxe();
         }
@@ -154,12 +156,14 @@ public class Player : MonoBehaviour, IDamageable
 
     IEnumerator Hurt()
     {
-        Color OriginalColour = _sprite.color;
-        _sprite.color = new Color(0.6117f, 0.1254f, 0.1254f);
+        Color red = new Color(0.5647059f, 0, 0);
+        Color white = new Color(1f, 1f, 1f);
+
+        _sprite.color = red;
 
         yield return new WaitForSeconds(0.2f);
 
-        _sprite.color = OriginalColour;
+        _sprite.color = white;
     }
 
     public void UpdateTimer()

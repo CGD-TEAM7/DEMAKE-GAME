@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] protected int coins;
     [SerializeField] protected GameObject coinPrefab;
 
+    [SerializeField] protected GameObject bloodEffect;
+
     protected bool inCombat = false;
 
     protected bool isDead = false;
@@ -66,6 +68,8 @@ public class Enemy : MonoBehaviour, IDamageable
         if (isDead)
             return;
 
+        Instantiate(bloodEffect, transform.position, Quaternion.identity);
+
         Health -= damageAmount;
         StartCoroutine(Hurt());
 
@@ -77,12 +81,14 @@ public class Enemy : MonoBehaviour, IDamageable
 
     IEnumerator Hurt()
     {
-        Color originalColour = sprite.color;
-        sprite.color = new Color(0.6117f,0.1254f, 0.1254f);
+        Color red = new Color(0.5647059f, 0, 0);
+        Color white = new Color(1f, 1f, 1f);
+
+        sprite.color = red;
 
         yield return new WaitForSeconds(0.2f);
 
-        sprite.color = originalColour;
+        sprite.color = white;
     }
 
 }

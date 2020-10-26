@@ -17,7 +17,7 @@ public class Breakable : MonoBehaviour, IDamageable
         Health = health;
     }
 
-    public void Damage(int damageAmount)
+    public virtual void Damage(int damageAmount)
     {
         GameObject effect = Instantiate(damageEffect, transform.position, Quaternion.identity);
         ParticleSystem ps = effect.GetComponent<ParticleSystem>();
