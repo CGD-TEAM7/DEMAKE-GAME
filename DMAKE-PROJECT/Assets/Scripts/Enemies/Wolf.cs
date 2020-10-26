@@ -8,7 +8,6 @@ public class Wolf : Enemy
 
     private float distToFollow = 7f;
     private bool moveToPlayer = false;
-    private bool inCombat = false;
 
     public override void Init()
     {
@@ -47,8 +46,17 @@ public class Wolf : Enemy
 
     public void InCombat()
     {
-        transform.position = Vector2.MoveTowards(transform.position, Player.Instance.transform.position * 1.3f, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, Player.Instance.transform.position, speed * Time.deltaTime);
         anim.SetBool("Running", true);
+
+        if(transform.position.x < Player.Instance.transform.position.x)
+        {
+            transform.localScale = new Vector2(-1, transform.localScale.y);
+        }
+        else
+        {
+            transform.localScale = new Vector2(1, transform.localScale.y);
+        }
 
         if (Vector2.Distance(transform.position, Player.Instance.transform.position) < attackDistance)
         {

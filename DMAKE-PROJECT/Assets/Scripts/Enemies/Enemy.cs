@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] protected int coins;
     [SerializeField] protected GameObject coinPrefab;
 
+    protected bool inCombat = false;
+
     protected bool isDead = false;
 
     public virtual void Init()
