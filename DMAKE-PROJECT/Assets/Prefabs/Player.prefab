@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7351716484320585682}
   - component: {fileID: 7351716484320585684}
   - component: {fileID: 7351716484320585685}
+  - component: {fileID: 850142751973209677}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -48,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 5
   canThrowAxe: 1
+  points: 0
   flyingAxePrefab: {fileID: 3282549074886309459, guid: 9b5adcebbc56a53418c9734ab5f194d3, type: 3}
   axeSprite: {fileID: 7351716486010968552}
 --- !u!61 &7351716484320585684
@@ -88,6 +90,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0706e5b802ac944e8411f76ab07be93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &850142751973209677
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7351716484320585681}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &7351716485657734578
 GameObject:
   m_ObjectHideFlags: 0

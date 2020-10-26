@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  arrow: {fileID: 783054745744063912, guid: dd288a0a6d6c83a4b98b593c049130e6, type: 3}
 --- !u!1 &6691768856248772568
 GameObject:
   m_ObjectHideFlags: 0

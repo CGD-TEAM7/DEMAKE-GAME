@@ -13,10 +13,16 @@ public class Boy : MonoBehaviour
 
     private Animator _anim;
 
+    public GameObject arrow;
+
+    public bool canFireArrows = false;
+
     private void Start()
     {
         _anim = GetComponentInChildren<Animator>();
         if (!_anim) Debug.LogError(name + "needs a Animator Component attached to a child object.");
+
+        StartCoroutine(FireArrow(5f));
     }
 
     private void Update()
@@ -44,5 +50,18 @@ public class Boy : MonoBehaviour
         }
 
         _anim.SetBool("isRunning", false);
+    }
+
+    private IEnumerator FireArrow(float timeBetweenShots)
+    {
+        //while in boss fight
+        while(canFireArrows)
+        {
+            yield return new WaitForSeconds(timeBetweenShots);
+
+            Instantiate(arrow, transform.position, Quaternion.identity);
+
+            yield return null;
+        }
     }
 }
