@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":false,"showMaterialUpdate":false,"showSkybox":false,"showFlares":false,"showImageEffects":false,"showParticleSystems":false,"showVisualEffectGraphs":true,"m_FxEnabled":true},"in2DMode":true,"pivot":{"x":0.8076585531234741,"y":-0.09682732820510864,"z":-18.36095428466797},"rotation":{"x":0.0,"y":0.0,"z":0.0,"w":1.0},"size":1.246716022491455,"orthographic":true}
 =======
 ﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":false,"showMaterialUpdate":false,"showSkybox":false,"showFlares":false,"showImageEffects":false,"showParticleSystems":false,"showVisualEffectGraphs":true,"m_FxEnabled":true},"in2DMode":true,"pivot":{"x":-0.41726356744766238,"y":0.994655430316925,"z":-2.5868868827819826},"rotation":{"x":0.0,"y":0.0,"z":0.0,"w":1.0},"size":4.839731216430664,"orthographic":true}
 >>>>>>> enemies
+=======
+﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":false,"showMaterialUpdate":false,"showSkybox":false,"showFlares":false,"showImageEffects":false,"showParticleSystems":false,"showVisualEffectGraphs":true,"m_FxEnabled":true},"in2DMode":false,"pivot":{"x":936.0506591796875,"y":712.9445190429688,"z":396.387451171875},"rotation":{"x":-0.274548202753067,"y":0.24933840334415437,"z":-0.07394709438085556,"w":-0.9257358908653259},"size":715.881591796875,"orthographic":false}
+>>>>>>> MenuScreen
