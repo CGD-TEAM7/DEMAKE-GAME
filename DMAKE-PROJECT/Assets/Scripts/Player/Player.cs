@@ -100,6 +100,8 @@ public class Player : MonoBehaviour, IDamageable
 
         Health -= damageAmount;
 
+        StartCoroutine(Hurt());
+
         UIManager.Instance.UpdateLifeUnits(Health);
 
         if (Health <= 0)
@@ -132,5 +134,15 @@ public class Player : MonoBehaviour, IDamageable
     {
         points += amount;
         UIManager.Instance.UpdatePointCount(points);
+    }
+
+    IEnumerator Hurt()
+    {
+        Color OriginalColour = _sprite.color;
+        _sprite.color = new Color(0.6117f, 0.1254f, 0.1254f);
+
+        yield return new WaitForSeconds(0.2f);
+
+        _sprite.color = OriginalColour;
     }
 }
