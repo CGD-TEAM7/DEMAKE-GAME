@@ -72,11 +72,15 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    IEnumerator DialogRoutine(string text)
+    public IEnumerator DialogRoutine(string text)
     {
+        float initailPlayerSpeed = Player.Instance._moveSpeed;
+        Player.Instance._moveSpeed = 0f;
+        yield return new WaitForEndOfFrame();
+        Player.Instance.enabled = false;
+
         dialogText.text = "";
         dialogImage.enabled = true;
-        Player.Instance.enabled = false;
 
         string[] strArray = text.Split(" "[0]);
 
@@ -90,14 +94,20 @@ public class UIManager : MonoBehaviour
 
         dialogText.text = "";
         dialogImage.enabled = false;
+
         Player.Instance.enabled = true;
+        Player.Instance._moveSpeed = initailPlayerSpeed;
     }
 
-    IEnumerator DialogRoutine(string text, string text2)
+    public IEnumerator DialogRoutine(string text, string text2)
     {
+        float initailPlayerSpeed = Player.Instance._moveSpeed;
+        Player.Instance._moveSpeed = 0f;
+        yield return new WaitForEndOfFrame();
+        Player.Instance.enabled = false;
+
         dialogText.text = "";
         dialogImage.enabled = true;
-        Player.Instance.enabled = false;
 
         string[] strArray = text.Split(" "[0]);
 
@@ -122,6 +132,8 @@ public class UIManager : MonoBehaviour
 
         dialogText.text = "";
         dialogImage.enabled = false;
+
         Player.Instance.enabled = true;
+        Player.Instance._moveSpeed = initailPlayerSpeed;
     }
 }

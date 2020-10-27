@@ -63,7 +63,7 @@ public class Player : MonoBehaviour, IDamageable
         if (isDead)
             return;
 
-        Move(_moveSpeed);
+        Move();
 
         if(Input.GetButtonDown("Fire1") && canThrowAxe)
         {
@@ -73,16 +73,16 @@ public class Player : MonoBehaviour, IDamageable
         UpdateTimer();
     }
 
-    private void Move(float speed)
+    private void Move()
     {
         float moveHorizontal = Input.GetAxisRaw("Horizontal");
         float moveVertical = Input.GetAxisRaw("Vertical");
 
         Vector2 move = new Vector2(moveHorizontal, moveVertical).normalized;
 
-        _anim.Move(move.magnitude);
+        _anim.Move(move.magnitude * _moveSpeed);
 
-        transform.Translate(move * speed * Time.deltaTime, Space.World);
+        transform.Translate(move * _moveSpeed * Time.deltaTime, Space.World);
 
         if (moveHorizontal > 0)
         {
