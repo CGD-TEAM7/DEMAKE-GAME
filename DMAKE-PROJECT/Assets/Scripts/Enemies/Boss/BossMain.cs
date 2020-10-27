@@ -9,18 +9,18 @@ public class BossMain : MonoBehaviour
 {
     private Animator animator;
     private SpriteRenderer[] renderers;
-    private MoveScript BossMove;
-    private WeaponScript BossWeapon;
+    //private BossMoveScript BossMove;
+    private BossScript BossWeapon;
 
     private Vector2 TargetPos;
 
-    void float BossHealth = 100.0f;
+    public float BossHealth = 100.0f;
     public float MinAttackCooldown = 0.5f;
     public float MaxAttackCooldown = 2.0f;
     private float InCooldown;
 
     public bool isHit = false;
-    public bool isAttacking = false;
+    public bool isAttacking;
     public bool isRage = false;
     private bool isSpawned = false;
 
@@ -57,7 +57,7 @@ public class BossMain : MonoBehaviour
 
     void Update()
     {
-        if(isSpawned == false)
+        if (isSpawned == false)
         {
             if (renderers[0].IsVisableFrom(Camera.main))
             {
@@ -68,7 +68,7 @@ public class BossMain : MonoBehaviour
         {
             InCooldown -= Time.deltaTime;
 
-            if(InCooldown <= 0.0f)
+            if (InCooldown <= 0.0f)
             {
                 isAttacking = !isAttacking;
                 InCooldown = Random.Range(MinAttackCooldown, MaxAttackCooldown);
@@ -81,31 +81,32 @@ public class BossMain : MonoBehaviour
 
             //set attacks
             BossMove.direction = Vector2.zero;
-            foreach(WeaponScript weapon in BossWeapon)
+            foreach (WeaponScript weapon in BossWeapon)
             {
-                if(weapon != null && weapon.enabled && weapon.CanAttack)
+                if (weapon != null && weapon.enabled && weapon.CanAttack)
                 {
                     weapon.Attack(true);
                     //put soundfx code here
                 }
             }
-        }
+        } 
+        
 
        else
         {
             // Define target
             if (TargetPos == Vector2.zero)
             {
-                
+
                 Vector2 randomPoint = new Vector2(Random.Range(0f, 1f), Random.Range(0f, 1f));
 
-               TargetPos = Camera.main.ViewportToWorldPoint(randomPoint);
+                TargetPos = Camera.main.ViewportToWorldPoint(randomPoint);
             }
 
             // at target
             if (GetComponent<Collider2D>().OverlapPoint(TargetPos))
             {
-                
+
                 TargetPos = Vector2.zero;
             }
 
@@ -138,10 +139,10 @@ public class BossMain : MonoBehaviour
     void OnTriggerEnter2D(Collider2D otherCollider2D)
     {
         // if hit
-        Player axeSprite = otherCollider2D.gameObject.GetComponent<Playert>();
-        if (axeSprite != null)
+        BossRock Rock = otherCollider2D.gameObject.GetComponent<Playert>();
+        if (Rock != null)
         {
-            if (axeSprite.isHit == true)
+            if (Rock.IsBossRock == true)
             {
                 // Stop attacks and start moving bac
                 InCooldown = Random.Range(MinAttackCooldown, MaxAttackCooldown);
@@ -150,9 +151,7 @@ public class BossMain : MonoBehaviour
                 // Change animation
                 animator.SetTrigger("BossHit");
             }
+        
         }
     }
-
- 
-
 }
