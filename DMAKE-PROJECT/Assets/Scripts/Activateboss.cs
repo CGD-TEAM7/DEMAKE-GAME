@@ -2,18 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActivateBoss : MonoBehaviour
+public class Activateboss : MonoBehaviour
 {
-    public GameObject hedge, hedge1, hedge2;
+    public Animator gateAnim;
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Collider2D collider = Player.Instance.gameObject.GetComponent<Collider2D>();
         if (collision == collider)
         {
-            hedge.SetActive(true);
-            hedge1.SetActive(true);
-            hedge2.SetActive(true);
+            gateAnim.SetTrigger("close");
+
+            Boss boss = FindObjectOfType<Boss>();
+            boss.bossFightStarted = true;
+
+            Boy boy = FindObjectOfType<Boy>();
+            boy.canFireArrows = true;
         }
     }
+
+    
 }

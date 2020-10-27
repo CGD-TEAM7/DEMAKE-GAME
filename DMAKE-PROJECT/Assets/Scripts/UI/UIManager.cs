@@ -38,18 +38,17 @@ public class UIManager : MonoBehaviour
         _instance = this;
     }
 
-    private void Start()
-    {
-        StartCoroutine(DialogRoutine("Follow me into the woods boy",
-    "It  is  time  you  showed  me  what  you  know  about  hunting"));
-    }
-
     public void UpdateTimerText(float time)
     {
         var minutes = time / 60;
         var seconds = time % 60;
 
-        timerText.text = string.Format("{0:00} : {1:00}", minutes, seconds);
+        Boss boss = FindObjectOfType<Boss>();
+
+        if (!boss.bossIsDead)
+        {
+            timerText.text = string.Format("{0:00} : {1:00}", minutes, seconds);
+        }
     }
 
     public void UpdatePointCount(int count)

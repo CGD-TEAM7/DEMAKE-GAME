@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoyArrow : MonoBehaviour
 {
-    public GameObject boss;
+    private Boss boss;
     public float speed = 15f;
 
     private void Start()
@@ -14,6 +14,7 @@ public class BoyArrow : MonoBehaviour
 
     private IEnumerator FlyRoutine()
     {
+        boss = FindObjectOfType<Boss>();
         Vector2 targetPos = boss.transform.position;
 
         Vector3 moveDirection = targetPos - (Vector2)transform.position;
@@ -30,7 +31,7 @@ public class BoyArrow : MonoBehaviour
             yield return null;
         }
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         Destroy(gameObject);
     }

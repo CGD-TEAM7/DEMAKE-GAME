@@ -15,7 +15,7 @@ public class Boy : MonoBehaviour
 
     public GameObject arrow;
 
-    public bool canFireArrows = false;
+    [HideInInspector] public bool canFireArrows = false;
 
     private void Start()
     {
@@ -54,14 +54,16 @@ public class Boy : MonoBehaviour
 
     private IEnumerator FireArrow(float timeBetweenShots)
     {
-        //while in boss fight
+        while(!canFireArrows)
+        {
+            yield return null;
+        }
+
         while(canFireArrows)
         {
             yield return new WaitForSeconds(timeBetweenShots);
 
             Instantiate(arrow, transform.position, Quaternion.identity);
-
-            yield return null;
         }
     }
 }
