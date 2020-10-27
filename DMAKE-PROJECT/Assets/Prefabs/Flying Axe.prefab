@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageAmount: 1
+  timeBetweenAttacks: 0.2
 --- !u!50 &-6604517458965371686
 Rigidbody2D:
   serializedVersion: 4

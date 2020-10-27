@@ -43,6 +43,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public virtual void Death()
     {
+        GetComponent<BoxCollider2D>().enabled = false;
         anim.SetTrigger("dead");
 
         for(int i = 0; i < coins; i++)

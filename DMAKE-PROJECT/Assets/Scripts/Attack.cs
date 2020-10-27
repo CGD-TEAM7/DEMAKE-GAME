@@ -8,6 +8,8 @@ public class Attack : MonoBehaviour
 
     private bool _canDamage = true;
 
+    [SerializeField] private float timeBetweenAttacks = 0.5f;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         IDamageable hit = other.GetComponent<IDamageable>();
@@ -25,7 +27,7 @@ public class Attack : MonoBehaviour
     private IEnumerator DamageRoutine()
     {
         _canDamage = false;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(timeBetweenAttacks);
         _canDamage = true;
     }
 }
