@@ -7,8 +7,11 @@ public class Coin : MonoBehaviour
     public int pointValue = 1;
     public GameObject collectEffect;
 
+    private AudioSource audioSource;
+
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         StartCoroutine(MoveToTarget(CalculateTarget(), 0.15f));
     }
 
@@ -18,7 +21,10 @@ public class Coin : MonoBehaviour
         {
             Player.Instance.AddPoints(pointValue);
             Instantiate(collectEffect, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            audioSource.Play();
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<BoxCollider2D>().enabled = false;
+            Destroy(gameObject, 2f);
         }
     }
 

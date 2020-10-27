@@ -34,6 +34,16 @@ public class Boss : Enemy
             {
                 anim.SetBool("isRunning", true);
                 transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+
+                if (transform.position.x < Player.Instance.transform.position.x)
+                {
+                    transform.localScale = new Vector2(-1, transform.localScale.y);
+                }
+                else
+                {
+                    transform.localScale = new Vector2(1, transform.localScale.y);
+                }
+
                 yield return null;
             }
 
@@ -42,13 +52,16 @@ public class Boss : Enemy
 
             int randNum = Random.Range(0, 10);
 
-            if(randNum < 5)
+            if(!isDead)
             {
-                StartCoroutine(ChargeAtPlayer());
-            }
-            else
-            {
-                ThrowRock();
+                if (randNum < 5)
+                {
+                    StartCoroutine(ChargeAtPlayer());
+                }
+                else
+                {
+                    ThrowRock();
+                }
             }
 
             yield return new WaitForSeconds(1f);
@@ -90,13 +103,15 @@ public class Boss : Enemy
 
         coins = 35 - Mathf.RoundToInt(finishTime / 10);
 
-        if(coins < 0)
+        if(coins > 0)
         {
             for (int i = 0; i < coins; i++)
             {
                 Instantiate(coinPrefab, transform.position, Quaternion.identity);
             }
         }
+
+        StartCoroutine(GameManager.Instance.LoadLevelRoutine("WinMenu", 8f));
 
         bossIsDead = true;
         isDead = true;

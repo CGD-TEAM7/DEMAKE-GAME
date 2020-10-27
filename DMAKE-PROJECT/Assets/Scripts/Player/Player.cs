@@ -40,6 +40,8 @@ public class Player : MonoBehaviour, IDamageable
 
     private Color originalSpriteColor;
 
+    private AudioSource _audioSource;
+
     private void Awake()
     {
         _instance = this;
@@ -53,6 +55,8 @@ public class Player : MonoBehaviour, IDamageable
 
         _anim = GetComponent<PlayerAnimation>();
         if (!_anim) Debug.LogError(name + " needs Player Animation Script to be attached.");
+
+        _audioSource = GetComponent<AudioSource>();
 
         Health = maxHealth;
     }
@@ -102,6 +106,8 @@ public class Player : MonoBehaviour, IDamageable
             return;
 
         Health -= damageAmount;
+
+        _audioSource.Play();
 
         StartCoroutine(Hurt());
 
@@ -170,5 +176,10 @@ public class Player : MonoBehaviour, IDamageable
     {
         GameManager.Instance.time += Time.deltaTime;
         UIManager.Instance.UpdateTimerText(GameManager.Instance.time);
+    }
+
+    public void OnDestroy()
+    {
+        FinalScoreManager.Instance.finalScore = points;
     }
 }
